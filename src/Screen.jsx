@@ -1,8 +1,8 @@
-const Screen = ({ text }) => {
+const Screen = ({ text,setText }) => {
     return (
         <>
             <div className = "screen-container">
-                <input id="screenid" type="text" className="screen" value="0" readOnly />
+                <input id="screenid" type="text" className="screen" value={text}   onChange={(e) => setText(e.target.value)}/>
             </div>
         </>
     )

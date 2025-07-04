@@ -1,38 +1,40 @@
-import { useState } from "react"
-const Buttons = ({ text }) => { 
-    /*function clear(){
-        document.getElementById('screenid').value = "";
+import React, { useState } from 'react';
+const Buttons = ({ text,setText }) => {
+    function buttonClick(value) {
+        setText(prev => prev + value)
     }
-    function calculator(){
-    var value=document.getElementById('screenid').value;
-    try{
-    document.getElementById('screenid').value=eval(value);
+    function calculate(){
+        try{
+            const result = eval(text)
+            setText(result.toString())
+        }catch{
+            setText("Error")
+        }
     }
-    catch{
-        document.getElementById('screenid').value="Error";
+    function clear(){
+        setText("")
     }
-}*/
     return(
         <>
             <div className="btns">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>C</button>
-                <button>00</button>
-                <button>0</button>
-                <button>*</button>
-                <button>-</button>
-                <button>/</button>
-                <button>.</button>
-                <button>=</button>
-                <button>+</button>    
+                <button onClick = {() => buttonClick("7")}>7</button>
+                <button onClick = {() => buttonClick("8")}>8</button>
+                <button onClick={() => buttonClick("9")}>9</button>
+                <button onClick={() => buttonClick("4")}>4</button>
+                <button onClick={() => buttonClick("5")}>5</button>
+                <button onClick={() => buttonClick("6")}>6</button>
+                <button onClick={() => buttonClick("1")}>1</button>
+                <button onClick={() => buttonClick("2")}>2</button>
+                <button onClick={() => buttonClick("3")}>3</button>
+                <button onClick={clear}>C</button>
+                <button onClick={() => buttonClick("00")}>00</button>
+                <button onClick={() => buttonClick("0")}>0</button>
+                <button onClick={() => buttonClick("*")}>*</button>
+                <button onClick={() => buttonClick("-")}>-</button>
+                <button onClick={() => buttonClick("/")}>/</button>
+                <button onClick={() => buttonClick(".")}>.</button>
+                <button onClick={calculate}>=</button>
+                <button onClick={() => buttonClick("+")}>+</button>    
             </div>
         </>
     )
